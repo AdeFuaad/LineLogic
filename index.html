@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
-      Tailwind Starter Template - Landing Page Template: Tailwind Toolbox
+      LineLogic - Learn About Popular Coding Languages
     </title>
     <meta name="description" content="Simple landind page" />
     <meta name="keywords" content="" />
@@ -14,6 +14,8 @@
     <!--Replace with your tailwind.css once created-->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
     <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
+    <link rel="stylesheet" href="./assets/style.css">
+    
     <style>
       .gradient {
         background: linear-gradient(90deg, black 0%, #daae51 100%);
@@ -80,9 +82,77 @@
       </div>
     </div>
     
-    <!-- jQuery if you need it
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  -->
+    <hr>
+    <!--videos-->
+
+    <div id="youtube_container" class="holder mx-auto w-10/12 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+
+      <div id="youtube_video_card" class="each mb-10 m-2 shadow-lg border-gray-800 bg-gray-100 relative">
+        <div class="desc p-4 text-gray-800" id="videoDetails">
+
+        </div>
+      </div>
+
+      <!-- each -->
+      <!-- each -->
+      <!-- each -->
+      <!-- each -->
+      <!-- each -->
+      <!-- each -->
+      <!-- each -->
+      <!-- each -->
+      <!-- each -->
+
+      <!-- FOR REFERENCE TO THE CARDS, HERE'S THE ORIGINAL -->
+      <!-- <div class="each mb-10 m-2 shadow-lg border-gray-800 bg-gray-100 relative">
+        <img class="w-full" src="https://i.ytimg.com/vi/qew27BNl7io/maxresdefault.jpg" alt="" />
+        <div class="badge absolute top-0 right-0 bg-indigo-500 m-1 text-gray-200 p-1 px-2 text-xs font-bold rounded">10:53</div>
+        <div class="info-box text-xs flex p-1 font-semibold text-gray-500 bg-gray-300">
+          <span class="mr-1 p-1 px-2 font-bold">105 views</span>
+          <span class="mr-1 p-1 px-2 font-bold border-l border-gray-400">105 Likes</span>
+          <span class="mr-1 p-1 px-2 font-bold border-l border-gray-400">105 Dislikes</span>
+        </div>
+        <div class="desc p-4 text-gray-800">
+          <a href="https://www.youtube.com/watch?v=dvqT-E74Qlo" target="_new" class="title font-bold block cursor-pointer hover:underline">Pubg Mobile Custom Room (Unlimited)</a>
+          <a href="https://www.youtube.com/user/sam14319" target="_new" class="badge bg-indigo-500 text-blue-100 rounded px-1 text-xs font-bold cursor-pointer">@dynamo_gaming</a>
+          <span class="description text-sm block py-2 border-gray-400 mb-2">lorem ipsum bekhum bukhum !lorem ipsum bekhum bukhum !</span>
+        </div>
+      </div> -->
+
+    
+      
+    </div>
+    <div class="btn-group grid grid-cols-8 flex items-center justify-center">
+      <button class="btn btn-outline bg-red-300 py-4 px-6">Previous page</button>
+      <button class="btn btn-outline  bg-red-300 py-4 px-6">Next</button>
+    </div>
+
+    <!--table-->
+    <div class="overflow-x-auto">
+      <div class="min-w-screen min-h-screen bg-gray flex justify-center bg-gray font-sans overflow-hidden "> <!--background style-->
+          <div class="w-full lg:w-5/6"> <!-- table width-->
+              <div class="bg-white shadow-md rounded my-6"> <!--table background-->
+                  <table class="min-w-max w-full table-auto">
+                      <thead> <!--table title-->
+                          <tr class="bg-gray-300 text-gray-600 uppercase text-sm leading-normal">
+                              <th class="py-3 px-6 text-left">GitHub Project</th>
+                              <th class="py-3 px-6 text-left">Owner</th>
+                              <th class="py-3 px-6 text-center">Star Count</th>
+                              <th class="py-3 px-6 text-center">URL</th>
+                          </tr>
+                      </thead>
+                      <!--table body-->
+                      <tbody class="text-gray-600 text-sm font-light">
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+    
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  
     <script>
       var scrollpos = window.scrollY;
       var header = document.getElementById("header");
@@ -128,6 +198,7 @@
       });
     </script>
     <script>
+
       /*Toggle dropdown list*/
       /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
 
@@ -164,5 +235,10 @@
         return false;
       }
     </script>
+
+    <script src="./assets/script.js">
+      
+    </script>
+    
   </body>
 </html>
