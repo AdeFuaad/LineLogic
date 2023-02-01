@@ -38,9 +38,9 @@
           </button>
         </div>
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
-          <ul class="list-reset lg:flex justify-end flex-1 items-center">
+          <ul class="list-reset lg:flex justify-end flex-1 items-center" id = "Language-Selector">
             <li class="mr-3">
-              <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="#">HMTL</a>
+              <a class="inline-block py-2 px-4 text-black no-underline" href="#">HMTL</a>
             </li>
             <li class="mr-3">
               <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">CSS</a>
@@ -50,7 +50,7 @@
             </li>
           </ul>
           <button
-            id="navAction"
+            id="SavedVideos"
             class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
           >
             Saved Videos
@@ -82,6 +82,7 @@
       </div>
     </div>
     
+
     <hr>
     <!--videos-->
 
@@ -112,10 +113,29 @@
           <span class="mr-1 p-1 px-2 font-bold border-l border-gray-400">105 Likes</span>
           <span class="mr-1 p-1 px-2 font-bold border-l border-gray-400">105 Dislikes</span>
         </div>
+
+    <!--videos-->
+
+    <div class="holder mx-auto w-10/12 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+      <!-- each -->
+      <div class="each mb-10 m-2 shadow-lg border-gray-800 bg-gray-100 relative">
+        <!--cover image source-->
+        <img class="w-full" src="https://i.ytimg.com/vi/qew27BNl7io/maxresdefault.jpg" alt="" />
+        <!--indicate video length or status-->
+        <div class="badge absolute top-0 right-0 bg-red-500 m-1 text-gray-200 p-1 px-2 text-xs font-bold rounded">10:53</div>
+        <!--basic information for viewers,likes-->
+        <div class="info-box text-xs flex p-1 font-semibold text-gray-500 bg-gray-300">
+          <span class="mr-1 p-1 px-2 font-bold">105 Watching</span>
+          <span class="mr-1 p-1 px-2 font-bold border-l border-gray-400">105 Likes</span>
+          <span class="mr-1 p-1 px-2 font-bold border-l border-gray-400">105 Dislikes</span>
+        </div>
+        <!--video titles and description-->
+
         <div class="desc p-4 text-gray-800">
           <a href="https://www.youtube.com/watch?v=dvqT-E74Qlo" target="_new" class="title font-bold block cursor-pointer hover:underline">Pubg Mobile Custom Room (Unlimited)</a>
           <a href="https://www.youtube.com/user/sam14319" target="_new" class="badge bg-indigo-500 text-blue-100 rounded px-1 text-xs font-bold cursor-pointer">@dynamo_gaming</a>
           <span class="description text-sm block py-2 border-gray-400 mb-2">lorem ipsum bekhum bukhum !lorem ipsum bekhum bukhum !</span>
+
         </div>
       </div> -->
 
@@ -127,12 +147,26 @@
       <button class="btn btn-outline  bg-red-300 py-4 px-6">Next</button>
     </div>
 
+          <!--save/delete button-->
+          <button class="btn btn-outline bg-green-200 py-1 px-3 rounded-full text-xs">Save</button>
+          <button class="btn btn-outline bg-red-200 py-1 px-3 rounded-full text-xs">Delete</button>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    
+
+
     <!--table-->
     <div class="overflow-x-auto">
       <div class="min-w-screen min-h-screen bg-gray flex justify-center bg-gray font-sans overflow-hidden "> <!--background style-->
           <div class="w-full lg:w-5/6"> <!-- table width-->
               <div class="bg-white shadow-md rounded my-6"> <!--table background-->
-                  <table class="min-w-max w-full table-auto">
+
+                  <table class="min-w-max w-full table-auto hidden">
+
                       <thead> <!--table title-->
                           <tr class="bg-gray-300 text-gray-600 uppercase text-sm leading-normal">
                               <th class="py-3 px-6 text-left">GitHub Project</th>
