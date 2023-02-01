@@ -1,6 +1,17 @@
 //List of Languages in Nav Bar
 languageSelectorEL = $("#Language-Selector")
 
+//Saved Videos Button
+SavedVideosButtonEl = $("#SavedVideos")
+
+//Repo Table Section
+RepoTableEl = $("table")
+
+//Saved Video Button
+SavedVideosButtonEl.on("click", function(){
+    RepoTableEl.addClass("hidden")
+})
+
 //Call these functions when page loads
 function init(){
     createTable()
@@ -13,6 +24,8 @@ languageSelectorEL.on("click", function(event) {
     languageSelectorEL.children().eq(0).children().eq(0).removeClass("font-bold")
     languageSelectorEL.children().eq(1).children().eq(0).removeClass("font-bold")
     languageSelectorEL.children().eq(2).children().eq(0).removeClass("font-bold")
+
+    RepoTableEl.removeClass("hidden")
 
     if (element.is("a")) {
         language = element.text()
