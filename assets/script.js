@@ -1,7 +1,4 @@
 
-// For the youtube API
-let videosContainer = $("#youtube_container")
-
 //List of Languages in Nav Bar
 languageSelectorEL = $("#Language-Selector")
 
@@ -18,8 +15,42 @@ videoContainer = $("#youtube_container")
 //Saved Video Button
 SavedVideosButtonEl.on("click", function () {
     RepoTableEl.addClass("hidden")
-    videoContainer.addClass("hidden")
+    videoContainer.removeClass("hidden")
+    displaySAVEDVideos()
 })
+
+//Display Saved Videos
+
+var displaySAVEDVideos = function () {
+
+    SavedVideos = localStorage.getItem("SavedVideos")
+    SavedVideos = JSON.parse(SavedVideos)
+    
+    for (var i = 0; i < 10; i++) {
+        videoContainer.children().eq(i).children().eq(0).children().eq(0).text("Save Slot")
+        videoContainer.children().eq(i).children().eq(0).children().eq(1).text("Save Slot")
+        videoContainer.children().eq(i).children().eq(0).children().eq(2).text("Save Slot")
+        videoContainer.children().eq(i).children().eq(0).children().eq(3).addClass("hidden")
+    }
+
+    if (SavedVideos != null) {
+        for (var i = 0; i < SavedVideos.Title.length; i++) {
+
+        ytVideoTitle =  SavedVideos.Title[i]
+        ytChannelOwner = SavedVideos.Owner[i]
+        ytDescription = SavedVideos.Descr[i]
+        ytVideoId = SavedVideos.Link[i]
+
+        videoContainer.children().eq(i).children().eq(0).children().eq(0).text(ytVideoTitle)
+        videoContainer.children().eq(i).children().eq(0).children().eq(0).attr("onclick",ytVideoId)
+
+        videoContainer.children().eq(i).children().eq(0).children().eq(1).text(ytChannelOwner)
+        videoContainer.children().eq(i).children().eq(0).children().eq(2).text(ytDescription)
+        }
+    }
+
+}
+
 
 //Call these functions when page loads
 function init() {
@@ -47,16 +78,47 @@ languageSelectorEL.on("click", function (event) {
 })
 
 //trigger save button to put video in local storage
-saveActionEL.on("click", function(event) {
+videoContainer.on("click", function (event) {
     element = $(event.target)
 
-    saveActionEL.children().eq(0).removeClass("bg-green-200")
-    saveActionEL.children().eq(0).text("SAVED")
-    saveActionEL.children().eq(0).addClass("bg-red-200")
+    if (element.is("button")) {
+        element.removeClass("bg-green-200")
+        element.text("SAVED")
+        element.addClass("bg-red-200")
 
-    //save button to local storage
-    var savedVideo =  data.items.snippet.title
-    localStorage.setItem("video1", savedVideo)
+        SavedVideos = localStorage.getItem("SavedVideos")
+
+        videoTitle = element.siblings().eq(0).text()
+        videoLink = element.siblings().eq(0).attr("onclick")
+        videoOwner = element.siblings().eq(1).text()
+        videoDescr = element.siblings().eq(2).text()
+
+        if (SavedVideos == null) {
+            var SavedVideos = {
+                Title: [videoTitle],
+                Link: [videoLink],
+                Owner: [videoOwner],
+                Descr: [videoDescr]
+            };
+            localStorage.setItem("SavedVideos", JSON.stringify(SavedVideos));
+        } else {
+            SavedVideos = JSON.parse(SavedVideos)
+
+            for (i = 0; i < SavedVideos.Title.length; i++) {
+                if (videoTitle == SavedVideos.Title[i]){
+                    break
+                } 
+            }
+            if (i >= SavedVideos.Title.length) {
+            SavedVideos.Title.push(videoTitle)
+            SavedVideos.Link.push(videoLink)
+            SavedVideos.Owner.push(videoOwner)
+            SavedVideos.Descr.push(videoDescr)
+            }
+            localStorage.setItem("SavedVideos", JSON.stringify(SavedVideos));
+        }
+
+    }
 })
 
 //Retreive data from data from GitHub
@@ -88,7 +150,7 @@ var getVideos = function (language) {
                     .then(function (data) {
                         //console.log(data)
                         displayVideos(data)
-                        saveActionEL.on()
+                        //saveActionEL.on()
                     });
             }
         });
@@ -139,6 +201,7 @@ var createTable = function () {
         RepoListing.append(RepoURLEl)
 
         RepoTable.append(RepoListing)
+
     }
 }
 
@@ -152,11 +215,7 @@ var displayVideos = function (data) {
         var ytVideoTitle = video[i].snippet.title
         var ytChannelOwner = video[i].snippet.channelTitle
         var ytDescription = video[i].snippet.description
-        //var ytVideoImg = video[i].snippet.thumbnails.default.url
         var ytVideoId = video[i].id.videoId
-
-        //thumbnail.attr("src",ytVideoImg)
-        //thumbnail.attr("alt","")
 
         videoContainer.children().eq(i).children().eq(0).children().eq(0).text(ytVideoTitle)
         videoContainer.children().eq(i).children().eq(0).children().eq(0).attr("onclick", 'window.open(' + '"' + 'https://www.youtube.com/watch?v=' + ytVideoId + '"' + ')')
@@ -164,7 +223,10 @@ var displayVideos = function (data) {
         videoContainer.children().eq(i).children().eq(0).children().eq(1).text(ytChannelOwner)
         videoContainer.children().eq(i).children().eq(0).children().eq(2).text(ytDescription)
 
-        
+        videoContainer.children().eq(i).children().eq(0).children().eq(3).removeClass("hidden")
+        videoContainer.children().eq(i).children().eq(0).children().eq(3).addClass("bg-green-200")
+        videoContainer.children().eq(i).children().eq(0).children().eq(3).text("save")
+        videoContainer.children().eq(i).children().eq(0).children().eq(3).removeClass("bg-red-200")
     }
 
 }
@@ -200,7 +262,7 @@ var creatVideoCards = function () {
         saveButton.text("save")
         videoDescription.append(saveButton)
 
-        
+
         videoCard.append(videoDescription)
         videoContainer.append(videoCard)
     }
