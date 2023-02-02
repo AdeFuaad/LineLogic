@@ -86,39 +86,9 @@
     <hr>
     <!--videos-->
 
-    <div id="youtube_container" class="holder mx-auto w-10/12 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
-
+    <div id="youtube_container_example" class="holder mx-auto w-10/12 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+      <!-- each -->
       <div id="youtube_video_card" class="each mb-10 m-2 shadow-lg border-gray-800 bg-gray-100 relative">
-        <div class="desc p-4 text-gray-800" id="videoDetails">
-
-        </div>
-      </div>
-
-      <!-- each -->
-      <!-- each -->
-      <!-- each -->
-      <!-- each -->
-      <!-- each -->
-      <!-- each -->
-      <!-- each -->
-      <!-- each -->
-      <!-- each -->
-
-      <!-- FOR REFERENCE TO THE CARDS, HERE'S THE ORIGINAL -->
-      <!-- <div class="each mb-10 m-2 shadow-lg border-gray-800 bg-gray-100 relative">
-        <img class="w-full" src="https://i.ytimg.com/vi/qew27BNl7io/maxresdefault.jpg" alt="" />
-        <div class="badge absolute top-0 right-0 bg-indigo-500 m-1 text-gray-200 p-1 px-2 text-xs font-bold rounded">10:53</div>
-        <div class="info-box text-xs flex p-1 font-semibold text-gray-500 bg-gray-300">
-          <span class="mr-1 p-1 px-2 font-bold">105 views</span>
-          <span class="mr-1 p-1 px-2 font-bold border-l border-gray-400">105 Likes</span>
-          <span class="mr-1 p-1 px-2 font-bold border-l border-gray-400">105 Dislikes</span>
-        </div>
-
-    <!--videos-->
-
-    <div class="holder mx-auto w-10/12 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
-      <!-- each -->
-      <div class="each mb-10 m-2 shadow-lg border-gray-800 bg-gray-100 relative">
         <!--cover image source-->
         <img class="w-full" src="https://i.ytimg.com/vi/qew27BNl7io/maxresdefault.jpg" alt="" />
         <!--indicate video length or status-->
@@ -132,30 +102,27 @@
         <!--video titles and description-->
 
         <div class="desc p-4 text-gray-800">
-          <a href="https://www.youtube.com/watch?v=dvqT-E74Qlo" target="_new" class="title font-bold block cursor-pointer hover:underline">Pubg Mobile Custom Room (Unlimited)</a>
-          <a href="https://www.youtube.com/user/sam14319" target="_new" class="badge bg-indigo-500 text-blue-100 rounded px-1 text-xs font-bold cursor-pointer">@dynamo_gaming</a>
+          <a href="https://www.youtube.com/watch?v=dvqT-E74Qlo" class="title font-bold block cursor-pointer hover:underline">Pubg Mobile Custom Room (Unlimited)</a>
+          <a href="https://www.youtube.com/user/sam14319"  class="badge bg-indigo-500 text-blue-100 rounded px-1 text-xs font-bold cursor-pointer">@dynamo_gaming</a>
           <span class="description text-sm block py-2 border-gray-400 mb-2">lorem ipsum bekhum bukhum !lorem ipsum bekhum bukhum !</span>
-
+          <!--save/delete button-->
+          <button class="btn btn-outline bg-green-200 py-1 px-3 rounded-full text-xs">Save</button>
+          
+          
         </div>
-      </div> -->
+      </div> 
 
     
       
     </div>
-    <div class="btn-group grid grid-cols-8 flex items-center justify-center">
-      <button class="btn btn-outline bg-red-300 py-4 px-6">Previous page</button>
-      <button class="btn btn-outline  bg-red-300 py-4 px-6">Next</button>
-    </div>
+    
 
-          <!--save/delete button-->
-          <button class="btn btn-outline bg-green-200 py-1 px-3 rounded-full text-xs">Save</button>
-          <button class="btn btn-outline bg-red-200 py-1 px-3 rounded-full text-xs">Delete</button>
-          
-        </div>
-        
-      </div>
+    <div id="youtube_container" class="holder mx-auto w-10/12 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
       
     </div>
+         
+          
+        
     
 
 
@@ -201,10 +168,10 @@
 
         if (scrollpos > 10) {
           header.classList.add("bg-white");
-          navaction.classList.remove("bg-white");
-          navaction.classList.add("gradient");
-          navaction.classList.remove("text-gray-800");
-          navaction.classList.add("text-white");
+          // navaction.classList.remove("bg-white");
+          // navaction.classList.add("gradient");
+          // navaction.classList.remove("text-gray-800");
+          // navaction.classList.add("text-white");
           //Use to switch toggleColour colours
           for (var i = 0; i < toToggle.length; i++) {
             toToggle[i].classList.add("text-gray-800");
@@ -215,10 +182,10 @@
           navcontent.classList.add("bg-white");
         } else {
           header.classList.remove("bg-white");
-          navaction.classList.remove("gradient");
-          navaction.classList.add("bg-white");
-          navaction.classList.remove("text-white");
-          navaction.classList.add("text-gray-800");
+          // navaction.classList.remove("gradient");
+          // navaction.classList.add("bg-white");
+          // navaction.classList.remove("text-white");
+          // navaction.classList.add("text-gray-800");
           //Use to switch toggleColour colours
           for (var i = 0; i < toToggle.length; i++) {
             toToggle[i].classList.add("text-white");
