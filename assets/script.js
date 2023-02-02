@@ -46,6 +46,19 @@ languageSelectorEL.on("click", function (event) {
     }
 })
 
+//trigger save button to put video in local storage
+saveActionEL.on("click", function(event) {
+    element = $(event.target)
+
+    saveActionEL.children().eq(0).removeClass("bg-green-200")
+    saveActionEL.children().eq(0).text("SAVED")
+    saveActionEL.children().eq(0).addClass("bg-red-200")
+
+    //save button to local storage
+    var savedVideo =  data.items.snippet.title
+    localStorage.setItem("video1", savedVideo)
+})
+
 //Retreive data from data from GitHub
 var getTopRepos = function (language) {
     var apiUrl = 'https://api.github.com/search/repositories?q=' + language + '+is:featured&sort=stars&order=desc';
@@ -75,6 +88,7 @@ var getVideos = function (language) {
                     .then(function (data) {
                         //console.log(data)
                         displayVideos(data)
+                        saveActionEL.on()
                     });
             }
         });
@@ -150,6 +164,7 @@ var displayVideos = function (data) {
         videoContainer.children().eq(i).children().eq(0).children().eq(1).text(ytChannelOwner)
         videoContainer.children().eq(i).children().eq(0).children().eq(2).text(ytDescription)
 
+        
     }
 
 }
@@ -185,6 +200,7 @@ var creatVideoCards = function () {
         saveButton.text("save")
         videoDescription.append(saveButton)
 
+        
         videoCard.append(videoDescription)
         videoContainer.append(videoCard)
     }
