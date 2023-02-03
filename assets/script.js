@@ -1,4 +1,3 @@
-
 //List of Languages in Nav Bar
 languageSelectorEL = $("#Language-Selector")
 
@@ -12,6 +11,13 @@ RepoTableEl = $("table")
 videoContainer = $("#youtube_container")
 
 
+//Call these functions when page loads
+function init() {
+    createTable()
+    creatVideoCards()
+}
+
+
 //Saved Video Button
 SavedVideosButtonEl.on("click", function () {
     RepoTableEl.addClass("hidden")
@@ -20,12 +26,12 @@ SavedVideosButtonEl.on("click", function () {
 })
 
 //Display Saved Videos
-
 var displaySAVEDVideos = function () {
 
     SavedVideos = localStorage.getItem("SavedVideos")
     SavedVideos = JSON.parse(SavedVideos)
     
+    //Update Video Cards info to "Save Slot"
     for (var i = 0; i < 10; i++) {
         videoContainer.children().eq(i).children().eq(0).children().eq(0).text("Save Slot")
         videoContainer.children().eq(i).children().eq(0).children().eq(1).text("Save Slot")
@@ -33,6 +39,7 @@ var displaySAVEDVideos = function () {
         videoContainer.children().eq(i).children().eq(0).children().eq(3).addClass("hidden")
     }
 
+    //Update Video Cards with information in local storage
     if (SavedVideos != null) {
         for (var i = 0; i < SavedVideos.Title.length; i++) {
 
@@ -51,36 +58,37 @@ var displaySAVEDVideos = function () {
 
 }
 
-
-//Call these functions when page loads
-function init() {
-    createTable()
-    creatVideoCards()
-}
-
 //Select language clicked
 languageSelectorEL.on("click", function (event) {
     element = $(event.target)
 
+    //Remove Bold Format from all Nav Menu Options
     languageSelectorEL.children().eq(0).children().eq(0).removeClass("font-bold")
     languageSelectorEL.children().eq(1).children().eq(0).removeClass("font-bold")
     languageSelectorEL.children().eq(2).children().eq(0).removeClass("font-bold")
+    languageSelectorEL.children().eq(3).children().eq(0).removeClass("font-bold")
+    languageSelectorEL.children().eq(4).children().eq(0).removeClass("font-bold")
+    languageSelectorEL.children().eq(5).children().eq(0).removeClass("font-bold")
 
+    //Reveal Table and Video Card Sections
     RepoTableEl.removeClass("hidden")
     videoContainer.removeClass("hidden")
 
     if (element.is("a")) {
+        //Retreive the language picked
         language = element.text()
+        //Bold language selected
         element.addClass("font-bold")
         getTopRepos(language)
         getVideos(language)
     }
 })
 
-//trigger save button to put video in local storage
+//Trigger save button to put video in local storage
 videoContainer.on("click", function (event) {
     element = $(event.target)
 
+    //Check if a saved button was clicked
     if (element.is("button")) {
         element.removeClass("bg-green-200")
         element.text("SAVED")
@@ -88,11 +96,13 @@ videoContainer.on("click", function (event) {
 
         SavedVideos = localStorage.getItem("SavedVideos")
 
+        //Retreive data from corresponding video card
         videoTitle = element.siblings().eq(0).text()
         videoLink = element.siblings().eq(0).attr("onclick")
         videoOwner = element.siblings().eq(1).text()
         videoDescr = element.siblings().eq(2).text()
 
+        //Create JSON/Local storage if it does not exist
         if (SavedVideos == null) {
             var SavedVideos = {
                 Title: [videoTitle],
@@ -101,6 +111,7 @@ videoContainer.on("click", function (event) {
                 Descr: [videoDescr]
             };
             localStorage.setItem("SavedVideos", JSON.stringify(SavedVideos));
+        //Append JSON if already exist if Video is already not saved
         } else {
             SavedVideos = JSON.parse(SavedVideos)
 
@@ -128,7 +139,6 @@ var getTopRepos = function (language) {
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
-                //console.log(data)
                 displayRepos(data);
             });
         }
@@ -144,13 +154,10 @@ var getVideos = function (language) {
 
     fetch(apiUrl)
         .then(function (response) {
-            console.log(response)
             if (response.ok) {
                 response.json()
                     .then(function (data) {
-                        //console.log(data)
                         displayVideos(data)
-                        //saveActionEL.on()
                     });
             }
         });
@@ -231,8 +238,8 @@ var displayVideos = function (data) {
 
 }
 
+//Create Video Cards
 var creatVideoCards = function () {
-
     for (var i = 0; i < 10; i++) {
 
         var videoCard = $("<div>")
@@ -268,7 +275,6 @@ var creatVideoCards = function () {
     }
 
 }
-
 
 init()
 
