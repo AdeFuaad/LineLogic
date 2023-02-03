@@ -43,15 +43,15 @@ WHEN clicked the saved button the saved videos are displayed
 ## Mock-Up
 ### Desktop view 
 # 
-![Displays The Youtube Videos and Github Repository "LineLogic".](./Assets/images/LineLogic.png)
+![Displays The Youtube Videos and Github Repository "LineLogic".](./assets/images/LineLogic.png)
 
 ### Tablet/ iPad View
 # 
-![Displays The Youtube Videos and Github Repository Responsive"LineLogic".](./Assets/images/Line2.png)
+![Displays The Youtube Videos and Github Repository Responsive"LineLogic".](./assets/images/Line2.png)
 
 ### Mobile Phone View
 #
-![Displays The Youtube Videos and Github Repository Responsive"LineLogic".](./Assets/images/Line3.png)
+![Displays The Youtube Videos and Github Repository Responsive"LineLogic".](./assets/images/Line3.png)
 
 ## Deployed Application
 https://adefuaad.github.io/LineLogic/
